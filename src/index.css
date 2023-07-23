@@ -89,6 +89,9 @@
   .header{
     @apply text-center font-semibold text-base mb-4
   }
+  .overlay{
+    @apply relative before:absolute before:inset-0 before:bg-black/60 before:top-0 before:right-0 overflow-hidden before:z-30
+  }
 }
 @layer components{
   .flex-center{

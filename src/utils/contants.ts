@@ -210,7 +210,7 @@ export const entryData : IBaseInterface = {
     companyName1: "ABC Corporation",
     companyName2: "XYZ Enterprises",
     companyName3: "Sample Co.",
-    businessType: "Business Name",
+    businessType: "Limited Liability",
     ngoType: "Charity",
     companyDescription: "Lorem ipsum dolor sit amet.",
     info: [
@@ -227,7 +227,7 @@ export const entryData : IBaseInterface = {
         signature:
           "https://res.cloudinary.com/da3wqzkz3/image/upload/v1689722420/Cloudinary-React/ze5qnqnbzltoygjltaa9.png",
         userid:
-          "https://res.cloudinary.com/da3wqzkz3/image/upload/v1689886690/Cloudinary-React/p2ep4hfqme1o8yr59vnx.png",
+          "https://res.cloudinary.com/da3wqzkz3/image/upload/v1671811423/edmlhdnboede1kzxnk4x.png",
         shares: 100,
       },
       {

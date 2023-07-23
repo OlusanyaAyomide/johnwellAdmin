@@ -17,7 +17,7 @@ export default function Header() {
 
    )
   return (
-    <div className='bg-background z-40 shadow-sm fixed w-full top-0 py-2 left-0 paddingx flex items-center '>
+    <div className='bg-background shadow-sm fixed z-50 w-full top-0 py-2 left-0 paddingx flex items-center '>
       <div  className='flex-center'>
          <Sheet>
             <SheetTrigger>
