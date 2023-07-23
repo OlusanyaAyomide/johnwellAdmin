@@ -9,7 +9,7 @@ export default function Layout({children}:{children:React.ReactNode}) {
          <Header/>
          <div className="flex">
             <div className='w-[300px] max-lg:hidden shrink-0 relative bg-main'>
-               <div className='sticky overflow-auto default-scroll h-screen pt-16 bg-main'>
+               <div className='sticky top-0 overflow-auto default-scroll h-screen pt-16 bg-main'>
                   <div className=''>
                      <SideLayout/>
                   </div>
