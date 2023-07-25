@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import ImageDiv from './ImageDiv'
 
 interface IPhotoGrid{
@@ -8,7 +8,10 @@ interface IPhotoGrid{
 }
 
 export default function PhotoGrid({userid,passport,signature}:IPhotoGrid) {
-   const randomChoice = Math.floor(Math.random() * 2) + 1
+   const randomChoice = useMemo(()=>{
+      return Math.floor(Math.random() * 2) + 1
+   },[])
+   
    const Type1 = ()=>(
       <div className='flex  w-full max-w-[750px]  mx-auto rounded-md overflow-hidden'>
          <div className='w-6/12 border-r-2 border-white'>

@@ -38,7 +38,7 @@ export default function Header() {
             <PopoverTrigger>
                <Icons.search className="icon-class text-2xl" />
             </PopoverTrigger>
-            <PopoverContent className="relative right-8 z-40 top-4 w-[340px] ">
+            <PopoverContent className="relative right-8 z-40 top-4 max-sm:left-2 max-xs:w-[300px] w-[340px] ">
                <h1 className="font-semiold mb-2 ml-1">Search</h1>
                <InputDiv/>
             </PopoverContent>
