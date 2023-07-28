@@ -15,8 +15,8 @@ interface IDisplay{
     label:string
     style?:string
     type?:'text'|'email'
-    name:string
-    formik:FormikProps<IBaseInterface>
+    name?:string
+    formik?:FormikProps<IBaseInterface>
 }
 
 export default function Display({text="",name="",label,className,ngClass,style,type='text',formik}:IDisplay) {
@@ -38,7 +38,7 @@ export default function Display({text="",name="",label,className,ngClass,style,t
                <Icons.clipboard className ="absolute cursor-pointer rounded-lg text-2xl bg-[#F8F8F8] text-main sm:text-3xl bottom-1 right-3 px-1"/>
          </CopyToClipboard>
       </div>}
-      {isEditing && <Input onChange={formik.handleChange} name={name} value={text} type={type} className='h-10 focus:border  sm:h-12 focus-visible:ring-1  bg-[#F8F8F8]'/>}
+      {isEditing && <Input onChange={formik?.handleChange} name={name} value={text} type={type} className='h-10 focus:border  sm:h-12 focus-visible:ring-1  bg-[#F8F8F8]'/>}
    </div>
   )
 }

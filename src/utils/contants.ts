@@ -12,7 +12,7 @@ export const accordionItem = [
           name: "Completed",
         },
         {
-          name: "In Progress",
+          name: "active",
         },
       ],
     },
@@ -50,7 +50,7 @@ export const accordionItem = [
   
 export const statusPreview=[
     {
-      name:"In progress",
+      name:"active",
       count:"24",
       icon:Icons.inProgress
     },
@@ -99,7 +99,7 @@ export const DemoTable = [
     "businessType": "partnership",
     "companyName1": "AlphaCorp",
     "companyName2": "BetaSolutions",
-    "status":"In progress",
+    "status":"active",
     "createdAt": "2023-07-23T10:15:30Z"
   },
   {
@@ -128,7 +128,7 @@ export const DemoTable = [
     "email": "swilliams@example.com",
     "businessType": "partnership",
     "companyName1": "AquaTech",
-    "status":"In progress",
+    "status":"active",
     "companyName2": "EcoSolutions",
     "createdAt": "2023-07-20T12:00:05Z"
   },
@@ -149,7 +149,7 @@ export const DemoTable = [
     "businessType": "partnership",
     "companyName1": "SmartInnovations",
     "companyName2": "IntelliTech",
-    "status":"In progress",
+    "status":"active",
     "createdAt": "2023-07-18T14:30:40Z"
   },
   {
@@ -179,7 +179,7 @@ export const DemoTable = [
     "businessType": "partnership",
     "companyName1": "BuildWise",
     "companyName2": "ConstructCo",
-    "status":"In progress",
+    "status":"active",
     "createdAt": "2023-07-15T11:40:25Z"
   },
   {
@@ -265,3 +265,99 @@ export const entryData : IBaseInterface = {
     ],
   },
 };
+
+
+
+export const mockPost = [
+  {
+    firstName: "John",
+    activationKey: "abc123",
+    lastName: "Doe",
+    description: "Software Engineer",
+    companyName: "Acme Inc.",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  {
+    firstName: "Jane",
+    activationKey: "xyz456",
+    lastName: "Smith",
+    description: "Data Analyst",
+    companyName: "DataCo",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+
+  {
+    firstName: "Alice",
+    activationKey: "123qwe",
+    lastName: "Johnson",
+    description: "Project Manager",
+    companyName: "TechCorp",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  {
+    firstName: "Bob",
+    activationKey: "789rty",
+    lastName: "Williams",
+    description: "Designer",
+    companyName: "DesignWorks",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  {
+    firstName: "Jane",
+    activationKey: "xyz456",
+    lastName: "Smith",
+    description: "Data Analyst",
+    companyName: "DataCo",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+
+  {
+    firstName: "Alice",
+    activationKey: "123qwe",
+    lastName: "Johnson",
+    description: "Project Manager",
+    companyName: "TechCorp",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  {
+    firstName: "Bob",
+    activationKey: "789rty",
+    lastName: "Williams",
+    description: "Designer",
+    companyName: "DesignWorks",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  {
+    firstName: "John",
+    activationKey: "abc123",
+    lastName: "Doe",
+    description: "Software Engineer",
+    companyName: "Acme Inc.",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  {
+    firstName: "Jane",
+    activationKey: "xyz456",
+    lastName: "Smith",
+    description: "Data Analyst",
+    companyName: "DataCo",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+
+  {
+    firstName: "Alice",
+    activationKey: "123qwe",
+    lastName: "Johnson",
+    description: "Project Manager",
+    companyName: "TechCorp",
+    createdAt: "2023-07-14T09:20:30Z",
+  },
+  
+
+];
+
+export const PostImgDemo =[  "https://res.cloudinary.com/da3wqzkz3/image/upload/v1689886688/Cloudinary-React/aq3khk3qydaisrqhgrv0.png",
+"https://res.cloudinary.com/da3wqzkz3/image/upload/v1689722420/Cloudinary-React/ze5qnqnbzltoygjltaa9.png",
+  "https://res.cloudinary.com/da3wqzkz3/image/upload/v1689886688/Cloudinary-React/aq3khk3qydaisrqhgrv0.png",
+]
+

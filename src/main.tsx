@@ -4,10 +4,16 @@ import App from './App.tsx'
 import './index.css'
 import { AllContextProvider } from './store/context.tsx'
 import { Toaster } from "@/components/ui/toaster"
+import {ReactQueryDevtools} from "react-query/devtools"
+import { QueryClientProvider, QueryClient} from 'react-query'
 
+const client = new QueryClient()
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <AllContextProvider>
-    <App />
-    <Toaster/>
+    <QueryClientProvider client={client}>
+        <App />
+        <Toaster/>
+    </QueryClientProvider>
+
 </AllContextProvider>
 )

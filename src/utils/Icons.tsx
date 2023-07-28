@@ -1,6 +1,6 @@
 import {AiOutlineSearch,AiOutlineMenu,AiOutlineSave} from "react-icons/ai"
 import {GrStatusInfoSmall} from "react-icons/gr"
-import {BiSolidUser} from "react-icons/bi"
+import {BiSolidUser,BiChevronLeft,BiChevronRight} from "react-icons/bi"
 import {BsStopwatch,BsFillPatchCheckFill,BsClock,BsClipboardCheck, BsFullscreen} from "react-icons/bs"
 import {FaAngleDoubleRight} from "react-icons/fa"
 import {IoIosHourglass} from "react-icons/io"
@@ -26,6 +26,8 @@ export const Icons = {
     angleDown:LiaAngleDownSolid,
     edit:FiEdit,
     trash:BsTrash,
-    save:AiOutlineSave
+    save:AiOutlineSave,
+    left:BiChevronLeft,
+    right:BiChevronRight
 
 }

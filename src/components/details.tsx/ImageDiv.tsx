@@ -15,7 +15,7 @@ export default function ImageDiv({url,text}:{url:string,text:string}) {
 
         <Dialog>
             <DialogTrigger asChild>
-                <Button size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] left-[20%]'>
+                <Button size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] left-[15%] md:left-[20%]'>
                   <Icons.full/>
                 </Button>        
             </DialogTrigger>  
@@ -28,7 +28,7 @@ export default function ImageDiv({url,text}:{url:string,text:string}) {
         </Dialog>
 
 
-        <Button onClick={()=>{download(url,"test.jpg")}} size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] right-[20%]'>
+        <Button onClick={()=>{download(url,"test.jpg")}} size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] right-[15%] sm:right-[20%]'>
         <Icons.download/>
         </Button>
 

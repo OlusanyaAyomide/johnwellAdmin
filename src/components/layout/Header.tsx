@@ -7,8 +7,8 @@ import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import SideLayout from './SideLayout'
 
 export default function Header() {
-   const InputDiv = ()=>(
-      <div className='flex w-full md:max-w-[350px] lg:max-w-[450px] relative'>
+   const InputDiv = ({className}:{className?:string})=>(
+      <div className={cn('flex w-full md:max-w-[350px] lg:max-w-[450px] relative',className)}>
          <Input placeholder="search" className={'focus-visible:ring-0 peer text-base focus:px-2 px-8 w-full'}/>
          <span className='absolute hidden md:block text-main peer-focus:hidden text-2xl bottom-[8px] left-[5px]'>
             <Icons.search/>
@@ -31,7 +31,7 @@ export default function Header() {
        <h1 className='font-semibold text-xl sm:text-2xl'>JohnWellforms</h1>
       </div>
       <div className="grow px-2 flex justify-center opacity-0 md:opacity-100">
-         <InputDiv/>
+         <InputDiv className='max-md:hidden'/>
       </div>
       <div className='ml-2 flex-center'>
          <Popover>
