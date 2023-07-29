@@ -68,13 +68,13 @@ interface EntryStatus {
     info: BusinessInfo[];
   }
   
-  interface Timeline {
+export interface ITimeline {
     week: number;
     month: number;
     all: number;
   }
   
-  interface Data {
+export interface IDetail {
     _id: string;
     activationKey: string;
     firstName: string;
@@ -96,7 +96,33 @@ export interface IApiResponse {
     length: number;
     page: number;
     total: number;
-    timeLine: Timeline;
+    timeLine: ITimeline;
     entrystatus: EntryStatus[];
-    data: Data[];
+    data: IDetail[];
+}
+
+export interface IUser{
+    _id: string;
+    name: string;
+    email: string;
+    isAdmin: boolean;
+}
+
+export interface ILogIn{
+  token:string
+  user:{
+    _id: string;
+    name: string;
+    email: string;
+    isAdmin: boolean;
   }
+}
+
+export interface IFilters{
+  type:"pre" | "post" 
+  duration:"week" | "month" | "all"
+  limit:number
+  page:number
+  status?:"active" | "completed" | "pending" | "all"
+  total:number
+}

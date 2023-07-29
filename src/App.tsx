@@ -10,16 +10,26 @@ import { getProfileRequest as queryFn } from './components/hooks/getrequets'
 import { useGetRequest, usePostRequest } from './components/hooks/useRequestProcessor'
 import FullScreenLoader from './utils/FullScreenLoader'
 import { AxiosResponse } from 'axios'
+import { IUser } from './utils/interfaces'
 
+interface ProfileResponse{
+  user:IUser
+}
 export default function () {
   const Loading =true
-  const {setStep} = useContext(Allcontext)
+  const {setStep,setProfile} = useContext(Allcontext)
 
-  const onError = (res:AxiosResponse<any>)=>{
+  const onSuccess = (res:AxiosResponse<ProfileResponse>)=>{
+    setProfile(res.data.user)
+  }
+  const onError = (res:AxiosResponse<ProfileResponse>)=>{
       setStep(0)
+
+
+      
   }
   const {step} = useContext(Allcontext)
-  const {isLoading} = useGetRequest({queryKey:"get-info-detail",queryFn,onError,showError:false})
+  const {isLoading} = useGetRequest({queryKey:"get-info-detail",queryFn,onError,showError:false,onSuccess})
   return (
     <>
         {!isLoading && <>

@@ -6,7 +6,8 @@ import { Icons } from '@/utils/Icons'
 import Allcontext from '@/store/context'
 import { Input } from '../ui/input'
 import { FormikProps } from 'formik'
-import { IBaseInterface } from '@/utils/interfaces'
+// import { IBaseInterface } from '@/utils/interfaces'
+import { IDetail } from '@/utils/interfaces'
 
 interface IDisplay{
     text?:string
@@ -16,7 +17,7 @@ interface IDisplay{
     style?:string
     type?:'text'|'email'
     name?:string
-    formik?:FormikProps<IBaseInterface>
+    formik?:FormikProps<IDetail>
 }
 
 export default function Display({text="",name="",label,className,ngClass,style,type='text',formik}:IDisplay) {

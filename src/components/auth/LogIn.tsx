@@ -8,13 +8,14 @@ import { AxiosError, AxiosResponse } from 'axios'
 import { Loader, Loader2 } from 'lucide-react'
 import { parseCookies,setCookie,destroyCookie } from 'nookies'
 import Allcontext from '@/store/context'
+import { ILogIn } from '@/utils/interfaces'
 
 export default function LogIn() {
   const [email,setEmail] = useState("")
   const [password,setPassword] = useState("")
-  const {setStep} = useContext(Allcontext)
+  const {setStep,setProfile} = useContext(Allcontext)
 
-  const onSuccess = (res:AxiosResponse<any>)=>{
+  const onSuccess = (res:AxiosResponse<ILogIn>)=>{
     console.log(res)
     const {authCookie} = parseCookies()
     if (authCookie){
@@ -24,7 +25,9 @@ export default function LogIn() {
        maxAge: 60 * 60*  2,
        path: '/',
      })
+     setProfile(res.data.user)
      setStep(1)
+    
   }
   const onError = (err:AxiosError<any>)=>{
     console.log(err)
@@ -35,9 +38,9 @@ export default function LogIn() {
   const {isLoading,mutate} = usePostRequest({queryKey:"sign-in",mutationFn,onSuccess,onError})
   return (
     <div className='w-screen h-screen grid place-items-center'>
-        <div className='mb-6 w-full max-w-[400px] relative overflow-hidden rounded-xl'>
+        <div className='mb-6 w-full max-w-[400px]  overflow-hidden rounded-xl'>
           <h1 className="text-2xl sm:text-3xl  text-center mb-6">Johnwell Forms</h1>
-            <Card className='py-12 px-2 shadow-lg'>
+            <Card className='py-12 px-2 shadow-lg relative'>
                 <h1 className='header'>Log In to continue</h1>
                 <div className ="mt-3 px-2">
                   <h1 className="mb-1 text-base font-medium">Email</h1>
@@ -46,10 +49,11 @@ export default function LogIn() {
                   <Input onChange={(e)=>{setPassword(e.target.value)}} value={password} className=' focus-visible:ring-1 ring-main' name='password' type='password'/>
                   <Button type='button' onClick={handleSubmit} disabled={isLoading} className='block w-full h-11 bg-main mt-8 hover:bg-blue-700'>Log In</Button>
                 </div>
-            </Card>
-            {isLoading && <div className="absolute grid place-content-center inset-0 z-30 bg-black/10">
+                {isLoading && <div className="absolute grid place-content-center inset-0 z-30 bg-black/10">
               <Loader className='text-main animate-spin duration-1000'/>
             </div>}
+       </Card>
+
         </div>
 
     </div>

@@ -9,6 +9,7 @@ import { BiFullscreen } from "react-icons/bi"
 import {LiaAngleDownSolid} from "react-icons/lia"
 import {FiEdit} from "react-icons/fi"
 import {BsTrash} from 'react-icons/bs'
+import { FiLogOut } from "react-icons/fi"
 
 export const Icons = {
     search:AiOutlineSearch,
@@ -28,6 +29,7 @@ export const Icons = {
     trash:BsTrash,
     save:AiOutlineSave,
     left:BiChevronLeft,
-    right:BiChevronRight
+    right:BiChevronRight,
+    logout:FiLogOut
 
 }

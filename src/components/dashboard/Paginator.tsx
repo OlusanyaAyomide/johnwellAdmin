@@ -1,13 +1,25 @@
+import Allcontext from '@/store/context';
 import { Icons } from '@/utils/Icons';
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
-export default function Paginator({total}:{total:number}){
-  const [active,setActive]= useState(1)
-  const page=2
+export default function Paginator(){
+  const {Appfilters:{page,total},setAppFilters} = useContext(Allcontext)
+
+  const handleBackward =()=>{
+    const newPage = page-1
+    setAppFilters((prev)=>{return{...prev,page:newPage}})
+  }
+  const handleForward = ()=>{
+    const newPage = page+1  
+    setAppFilters((prev)=>{return{...prev,page:newPage}})
+  }
   const getArray = ()=>{
     let result=[]
     for (let i = 0; i <= 3; i++) {
-      result.push(i);
+      if(i < total){
+        result.push(i);
+      }
+
     }
     return result
   }
@@ -15,13 +27,12 @@ export default function Paginator({total}:{total:number}){
   return (
     <div className='w-fit'>
       <div className='flex max-sm:mb-3 items-center mr-3'>
-        <button className='text-xl'><Icons.left/></button>
-        {numList.map((item,key)=>(
-          <div key={key} className={`rounded-md ${item+active === page?"bg-main text-white":"bg-gray-200 text-shade"} grid place-content-center h-[20px] font-medium w-[20px] mr-1`}>
-            {item + active}
+        <button onClick={handleBackward} disabled={page===1} className='text-xl'><Icons.left/></button>
+          <div  className={`rounded-sm bg-gray-300  grid place-content-center h-[20px] font-medium w-[20px] mr-1`}>
+            {page}
           </div>
-     ))}
-        <button onClick={()=>{setActive((prev=>prev+1))}} className='text-xl'><Icons.right/></button>
+        <button disabled={page===total} onClick={handleForward} className='text-xl'><Icons.right/></button>
+        <span className="font-medium text-xs">Total {total}</span>
     </div>
     </div>
 

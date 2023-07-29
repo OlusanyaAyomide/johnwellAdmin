@@ -16,7 +16,7 @@ interface IFetchPost{
   showError?:boolean
 }
 interface IGetPost{
-  queryKey:string,
+  queryKey:string | string[],
   queryFn:(variables:any) => Promise<any>
   onSuccess?:(data:any)=>void
   onError?:(data:any)=>void

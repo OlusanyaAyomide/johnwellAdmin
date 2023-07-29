@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Input } from '../ui/input'
 import { cn } from '@/lib/utils'
 import { Icons } from '@/utils/Icons'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Sheet, SheetContent, SheetTrigger } from '../ui/sheet'
 import SideLayout from './SideLayout'
+import Allcontext from '@/store/context'
 
 export default function Header() {
+   const {name,isAdmin} = useContext(Allcontext).profile
+   const substring = name?.substring(0,2)
    const InputDiv = ({className}:{className?:string})=>(
       <div className={cn('flex w-full md:max-w-[350px] lg:max-w-[450px] relative',className)}>
          <Input placeholder="search" className={'focus-visible:ring-0 peer text-base focus:px-2 px-8 w-full'}/>
@@ -14,7 +17,6 @@ export default function Header() {
             <Icons.search/>
          </span>
       </div>
-
    )
   return (
     <div className='bg-background shadow-sm fixed z-50 w-full top-0 py-2 left-0 paddingx flex items-center '>
@@ -43,7 +45,7 @@ export default function Header() {
                <InputDiv/>
             </PopoverContent>
          </Popover>
-         <div className="rounded-full h-10 w-10 bg-gray-100 grid place-content-center">AB</div>
+         <div className="rounded-full h-10 w-10 bg-gray-100 grid place-content-center uppercase">{substring}</div>
       </div>
     </div>
   )

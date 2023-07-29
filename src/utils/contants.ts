@@ -6,14 +6,18 @@ export const accordionItem = [
       icon:Icons.info,
       options: [
         {
+          name: "All",
+        },
+        {
+          name: "Active",
+        },
+        {
           name: "Pending",
         },
         {
           name: "Completed",
         },
-        {
-          name: "active",
-        },
+
       ],
     },
     {
@@ -28,9 +32,6 @@ export const accordionItem = [
         },
         {
           name: "Week",
-        },
-        {
-          name: "Latest",
         },
       ],
     },
