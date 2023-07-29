@@ -1,16 +1,15 @@
-import { IDetail, IFilters, ITimeline, IUser } from "@/utils/interfaces"
+import { IDetail, IFilters, IPostDetail, ITimeline, IUser } from "@/utils/interfaces"
 import React, { createContext,useState } from "react"
 
 export interface IStepInterface{
     businesType:string
 }
-const initialFilters:IFilters={
-    type:"pre",
+export const initialFilters:IFilters={
     status:"all",
     duration:"all",
     limit:10,
     page:1,
-    total:3
+    total:1
 }
 export interface ContextType{
     businessType:string
@@ -31,9 +30,12 @@ export interface ContextType{
     setallPreData:React.Dispatch<React.SetStateAction<IDetail[]>>,
     timeLine:ITimeline
     setTimeLine:React.Dispatch<React.SetStateAction<ITimeline>>
-    // firstLoad:boolean,
-    // setFirstLoad:React.Dispatch<React.SetStateAction<boolean>>
-    
+    setPostDetail:React.Dispatch<React.SetStateAction<IPostDetail>>
+    postDetail:IPostDetail
+    setAllPosts:React.Dispatch<React.SetStateAction<IPostDetail[]>>
+    allPosts:IPostDetail[]
+
+
        
 }
 
@@ -50,11 +52,14 @@ export const AllContextProvider =(children:any)=>{
     const [activeDetail,setActiveDetail] = useState<IDetail>({} as IDetail)
     const [allPreData,setallPreData] = useState<IDetail[]>([])
     const [timeLine,setTimeLine] = useState<ITimeline>({} as ITimeline)
+    const [postDetail,setPostDetail] = useState<IPostDetail>({} as IPostDetail)
+    const [allPosts,setAllPosts] = useState<IPostDetail[]>([])
+
 
 
 
     const context = {
-        businessType,setBusinessType,setIsEditing,isEditing,filterArray,setFilters,step,setStep,profile,setProfile,
+        businessType,setBusinessType,setIsEditing,isEditing,filterArray,setFilters,step,setStep,profile,setProfile,postDetail,setPostDetail,allPosts,setAllPosts,
         Appfilters,setAppFilters,activeDetail,setActiveDetail,allPreData,setallPreData,timeLine,setTimeLine
     }
     return <Allcontext.Provider value={context}>{children.children}</Allcontext.Provider>

@@ -37,10 +37,10 @@ export default function LogIn() {
   }
   const {isLoading,mutate} = usePostRequest({queryKey:"sign-in",mutationFn,onSuccess,onError})
   return (
-    <div className='w-screen h-screen grid place-items-center'>
-        <div className='mb-6 w-full max-w-[400px]  overflow-hidden rounded-xl'>
-          <h1 className="text-2xl sm:text-3xl  text-center mb-6">Johnwell Forms</h1>
-            <Card className='py-12 px-2 shadow-lg relative'>
+    <div className='w-screen h-screen grid bg-black/5 place-items-center'>
+        <div className='mb-6 w-full max-w-[400px]  rounded-xl'>
+          <h1 className="text-2xl sm:text-3xl text-center mb-6">Johnwell Forms</h1>
+            <div className='py-12 bg-background px-2 shadow-lg  relative  rounded-lg border-border border'>
                 <h1 className='header'>Log In to continue</h1>
                 <div className ="mt-3 px-2">
                   <h1 className="mb-1 text-base font-medium">Email</h1>
@@ -52,7 +52,7 @@ export default function LogIn() {
                 {isLoading && <div className="absolute grid place-content-center inset-0 z-30 bg-black/10">
               <Loader className='text-main animate-spin duration-1000'/>
             </div>}
-       </Card>
+       </div>
 
         </div>
 

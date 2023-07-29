@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Display from './Display'
-import { entryData } from '@/utils/contants'
+import { Johnwell } from '@/utils/FullScreenLoader'
 import PhotoGrid from './PhotoGrid'
 import Allcontext from '@/store/context'
 import Admin from './Admin'
@@ -9,30 +9,51 @@ import { Separator } from '../ui/separator'
 import { Button } from '../ui/button'
 import { Icons } from '@/utils/Icons'
 import { formatDate } from '@/utils/contants'
+import { Badge } from '../ui/badge'
+import { updatePreRequest as mutationFn } from '../hooks/postrequests'
+import { usePostRequest } from '../hooks/useRequestProcessor'
+import { AxiosResponse } from 'axios'
+import { IDetail } from '@/utils/interfaces'
+import { toast } from '../ui/use-toast'
 
 export default function Detail() {
   const {activeDetail,profile:{isAdmin}} = useContext(Allcontext)
   const userDetail = {...activeDetail}
-  const {setIsEditing,isEditing} = useContext(Allcontext)
+  const {setIsEditing,isEditing,setActiveDetail} = useContext(Allcontext)
   const formik = useFormik({
     initialValues:userDetail,
+    enableReinitialize:true,
     onSubmit:()=>{}
   })
+  const onSuccess = (res:AxiosResponse<{data:IDetail}>)=>{
+    setActiveDetail(res.data.data)   
+    toast({
+      description:"Change Succesful",
+      className:"border-2 border-green-500",
+    })
+  }
   const entry = formik.values
   const business = formik.values.business
   const isIT = business.businessType === 'Incorporated Trustee'
   const isLTD = business.businessType === "Limited Liability"
-  console.log(formik.values)
+  const {mutate,isLoading} = usePostRequest({queryKey:"update-pre",mutationFn,onSuccess})
+
   return (
     <div className='pb-6'>
-      <div className="flex max-sm:flex-wrap justify-between mb-4">
+      <div className="flex max-sm:flex-wrap justify-between mb-1">
          <h1 className="text-lg font-semibold uppercase my-1">Pre Cac Registration Data for {entry.firstName} {entry.surName}</h1>
          {isAdmin && <Admin/>}
+      </div>
+      <div className="mb-3">
+        <Badge className={`ml-2 ${entry.status === "active"?"bg-main px-6":entry.status ==="pending"?"bg-yellow-500 px-5":"bg-green-500"}`}>{entry.status}</Badge>
       </div>
       <form onSubmit={formik.handleSubmit}>
       <div className='rounded-lg mx-2 border-border/50 border mb-6 shadow-md py-8 px-2'>
         <h1 className='header'>Basic Details</h1>
         <div className='flex flex-wrap'>
+          <div className="w-full">
+            <Display formik={formik} name='activationKey' text={entry.activationKey} label='Activation Key' className='w-6/12 pr-2'/>
+          </div>
           <Display formik={formik} name='firstName' text={entry.firstName} label='SurName' className='w-6/12 pr-2'/>
           <Display formik={formik} name='surName' text={entry.surName} label='First Name' className='w-6/12 pl-2'/>
           <Display formik={formik} name='middleName' text={entry.middleName} label='Middle Name' className='w-full'/>
@@ -107,16 +128,19 @@ export default function Detail() {
                }} className='flex bg-red-500 hover:bg-red-600'>
                   <span>Cancel</span> <span className='ml-6'><Icons.trash/></span>
                </Button>
-               <Button className='bg-main hover:bg-blue-600'>
+               <Button onClick={()=>{mutate(formik.values)}} className='bg-main hover:bg-blue-600'>
                 <span>Save</span> <span className='ml-6'><Icons.save/></span>
                </Button>
             </div>   
           </>}
-   
         </div>
       </div>
-
       </form>
+      {isLoading && <div className='fixed z-50 inset-0 grid place-content-center bg-black/20'>
+          <div className="relative lg:left-12 ">
+          <Johnwell/>
+          </div>
+            </div>}
     </div>
   )
 }

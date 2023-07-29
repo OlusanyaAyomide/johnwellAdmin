@@ -7,13 +7,9 @@ import Allcontext from '@/store/context'
 interface IPreviewer{
   text:string
   children:React.ReactNode
-  all:string,
-  week:string,
-  month:string
-  isLoading?:boolean
-  loading2?:boolean
+
 }
-export default function Previewer({text,children,all,week,month,isLoading=false}:IPreviewer) {
+export default function Previewer({text,children}:IPreviewer) {
   const mockArray =["All","active"]
   const {timeLine} = useContext(Allcontext)
   return (

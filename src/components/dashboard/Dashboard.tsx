@@ -31,13 +31,13 @@ export default function Dashboard() {
     console.log(url)
     return request.get(url) as Promise<AxiosResponse<IApiResponse>>
   }
-  const {isLoading,data,isFetching} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
+  const {isLoading} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
   queryFn,onSuccess,staleTime:0})
-  console.log(data,isFetching,isLoading)
+
 
   const skeletonArray=[1,2,3,4]
   return (
-      <Previewer week={data?.data?.timeLine?.week} month={data?.data?.timeLine?.month} isLoading={isLoading} all={data?.data?.timeLine?.all} text='Pre Cac Registration'>
+      <Previewer text='Pre Cac Registration'>
       <div className='mt-4'>
       {isLoading && <div className='h-5 w-5 rounded-full border-main border-[2px] fixed border-r-transparent z-50 top-4 right-16 animate-spin'></div>}
           {allPreData.length > 0  && <div className="mt-1 overflow-hidden">
@@ -75,12 +75,18 @@ export default function Dashboard() {
               </TableBody>
             </Table>
           </div>}
-          {allPreData.length === 0 && <div className='mt-6'>
+          {allPreData.length === 0 && isLoading && <div className='mt-6'>
             {skeletonArray.map((item)=>(
               <Skeleton className='rounded-sm h-[80px] mb-2 w-full' key={item}/>
             ))}
           </div>
           }
+          {allPreData.length === 0 && !isLoading && <div className='h-[60px] grid place-items-center'>
+            <div>
+              <h1 className='text-lg text-center mb-2 font-medium'>All Caught up</h1>
+              <h1 className='text-center'>No result matches this query</h1>
+            </div>
+            </div>}
 
       </div>
       </Previewer>

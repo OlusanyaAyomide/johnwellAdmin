@@ -119,10 +119,29 @@ export interface ILogIn{
 }
 
 export interface IFilters{
-  type:"pre" | "post" 
   duration:"week" | "month" | "all"
   limit:number
   page:number
   status?:"active" | "completed" | "pending" | "all"
   total:number
 }
+export interface IPostDetail{
+  _id:string
+  firstName:string
+  lastName:string
+  description:string
+  companyName:string
+  createdAt:string
+  files:string[]
+}
+
+export interface IPostAPiresponse{
+  status: string;
+  length: number;
+  page: number;
+  total: number;
+  timeLine: ITimeline;
+  data:IPostDetail[]
+}
+
+

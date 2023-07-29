@@ -74,6 +74,7 @@ export const useGetRequest = ({
     queryKey:[queryKey],
     staleTime:staleTime,
     refetchOnWindowFocus:false,
+    // refetchOnMount:true,
     retry:retry,
     queryFn,
     onSuccess,

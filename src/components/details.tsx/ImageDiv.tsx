@@ -5,7 +5,7 @@ import useDownloader from "react-use-downloader"
 
 
 
-export default function ImageDiv({url,text,imagename}:{url:string,text:string,imagename:string}) {
+export default function ImageDiv({url,text}:{url:string,text:string}) {
   const {download} = useDownloader()
   const cloudlink = `https://res.cloudinary.com/da3wqzkz3/image/upload/v1690586012/${url}`
   console.log(cloudlink)
@@ -29,7 +29,7 @@ export default function ImageDiv({url,text,imagename}:{url:string,text:string,im
         </Dialog>
 
 
-        <Button onClick={()=>{download(url,`${imagename}.jpg`)}} size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] right-[15%] sm:right-[20%]'>
+        <Button onClick={()=>{download(url,`test.jpg`)}} size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] right-[15%] sm:right-[20%]'>
         <Icons.download/>
         </Button>
 
