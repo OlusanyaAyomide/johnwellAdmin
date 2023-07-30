@@ -6,13 +6,13 @@ import Allcontext from '@/store/context'
 
 
 export default function Filters() {
-   const {setAppFilters,Appfilters:{duration,status,limit,type}} = useContext(Allcontext)
+   const {setAppFilters,Appfilters:{duration,status,limit},step} = useContext(Allcontext)
    const handleDuration=(value:"all" | "week" | "month")=>{
       setAppFilters((prev)=>{return {...prev,duration:value}})
    }
    const handleLimit =(value:string)=>{
       const number = Number(value)
-      setAppFilters((prev)=>{return {...prev,limit:number}})
+      setAppFilters((prev)=>{return {...prev,limit:number,page:1}})
    }
    const handleStatus = (value:"active" | "completed" | "pending" | "all")=>{
       setAppFilters((prev)=>{return {...prev,status:value}})
@@ -36,7 +36,7 @@ export default function Filters() {
                   </SelectGroup>
             </SelectContent>
          </Select>
-         {type === "pre" && <Select onValueChange={handleStatus} >
+         {step === 1 && <Select onValueChange={handleStatus} >
             <SelectTrigger className='max-sm:w-fit w-[160px] lg:w-[180px] focus-visible:ring-0 mr-2'>
                <SelectValue placeholder='Status'/>
             </SelectTrigger>

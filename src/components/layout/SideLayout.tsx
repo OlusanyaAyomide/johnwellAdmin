@@ -29,6 +29,11 @@ export default function SideLayout() {
       if (key ===1 && value==="week" || value ==="month" || value==="all"){
          setAppFilters((prev)=>{return{...prev,duration:value}})
       }
+      if (key ===2 && name === "Add Users"){
+         setStep(6)
+      }else{
+         setStep(7)
+      }
 
    }   
   return (

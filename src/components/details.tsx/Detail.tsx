@@ -31,6 +31,7 @@ export default function Detail() {
       description:"Change Succesful",
       className:"border-2 border-green-500",
     })
+    setIsEditing(false)
   }
   const entry = formik.values
   const business = formik.values.business
@@ -128,7 +129,7 @@ export default function Detail() {
                }} className='flex bg-red-500 hover:bg-red-600'>
                   <span>Cancel</span> <span className='ml-6'><Icons.trash/></span>
                </Button>
-               <Button onClick={()=>{mutate(formik.values)}} className='bg-main hover:bg-blue-600'>
+               <Button type='submit' onClick={()=>{mutate(formik.values)}} className='bg-main hover:bg-blue-600'>
                 <span>Save</span> <span className='ml-6'><Icons.save/></span>
                </Button>
             </div>   

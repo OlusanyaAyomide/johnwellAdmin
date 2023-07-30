@@ -12,7 +12,7 @@ import { Johnwell } from '@/utils/FullScreenLoader'
 import { AxiosResponse } from 'axios'
 import { IDetail } from '@/utils/interfaces'
 import { useToast } from '../ui/use-toast'
-
+import { deleteFieldrequest } from '../hooks/postrequests'
 
 interface IAdmin{
   Icon:any,
@@ -26,7 +26,7 @@ export default function Admin() {
   const ref = useRef<HTMLButtonElement>(null)
   const [isOpen,setIsOpen] = useState(false)
   const {toast} = useToast()
-  const {isEditing,setIsEditing,setActiveDetail,Appfilters,activeDetail:{_id,status}} = useContext(Allcontext)
+  const {isEditing,setIsEditing,setActiveDetail,setStep,Appfilters,activeDetail:{_id,status}} = useContext(Allcontext)
   const mutationFn = (body:any)=>{
     return request.post(`api/v1/prestatusupdate/${_id}`,body)
   }
@@ -38,6 +38,14 @@ export default function Admin() {
     setIsOpen(false)
     setActiveDetail(res.data.data)
   }
+  const handleSuccess =()=>{
+    toast({
+      description:"Field Deleted succesfully",
+      className:"border-2 border-red-500"
+    })
+    setStep(1)
+  }
+  const {mutate:deleteE,isLoading:Loading} = usePostRequest({queryKey:"delete-entry",mutationFn:deleteFieldrequest,onSuccess:handleSuccess})
   const {mutate,isLoading} = usePostRequest({queryKey:"updatepost",mutationFn,onSuccess})
   const Buttons = ({Icon,text,onClick,className,disabled}:IAdmin)=>(
     <Button disabled={disabled}  variant='ghost' onClick={onClick} className={cn('flex py-2 w-full items-center justify-start',className)}>
@@ -84,11 +92,16 @@ export default function Admin() {
             </AlertDialogHeader>
             <AlertDialogFooter>
               <AlertDialogCancel >Cancel</AlertDialogCancel>
-              <AlertDialogAction className='hover:bg-red-500'>Continue</AlertDialogAction>
+              <AlertDialogAction onClick={()=>{deleteE({_id})}} className='hover:bg-red-500'>Continue</AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
         {isLoading && <div className='absolute z-40 -inset-2 grid place-content-center bg-black/20'>
+          <div className="fixed w-fit top-[50%] right-[27%] ">
+          <Johnwell/>
+          </div>
+        </div>}
+        {Loading && <div className='absolute z-40 -inset-2 grid place-content-center bg-black/20'>
           <div className="fixed w-fit top-[50%] right-[27%] ">
           <Johnwell/>
           </div>

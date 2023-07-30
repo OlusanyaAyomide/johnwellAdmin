@@ -8,3 +8,9 @@ export const SignInRequest = (body:{email:string,password:string})=>{
 export const updatePreRequest = (body:any)=>{
     return request.post("api/v1/preupdate",body)
 }
+export const NewUserrequest = (body:any)=>{
+    return request.post("api/v1/user/new",body)
+}
+export const deleteFieldrequest = (body:any)=>{
+    return request.post("api/v1/predelete",body)
+}

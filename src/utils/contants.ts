@@ -43,7 +43,7 @@ export const accordionItem = [
             name: "Add Users",
           },
           {
-            name: "Delete Users",
+            name: "Manage Users",
           },
         ],
       },

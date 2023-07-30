@@ -10,7 +10,7 @@ import {LiaAngleDownSolid} from "react-icons/lia"
 import {FiEdit} from "react-icons/fi"
 import {BsTrash} from 'react-icons/bs'
 import { FiLogOut } from "react-icons/fi"
-
+import { BsEyeSlash,BsEye } from "react-icons/bs"
 export const Icons = {
     search:AiOutlineSearch,
     menu:AiOutlineMenu,
@@ -30,6 +30,8 @@ export const Icons = {
     save:AiOutlineSave,
     left:BiChevronLeft,
     right:BiChevronRight,
-    logout:FiLogOut
+    logout:FiLogOut,
+    show:BsEye,
+    hide:BsEyeSlash,
 
 }

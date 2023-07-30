@@ -31,12 +31,13 @@ export default function PostDashBoard() {
     const url =`api/v1/post?duration=${duration}&page=${page}&limit=${limit}`
     return request.get(url) as Promise<AxiosResponse<IPostAPiresponse>>
   }
-  const {isLoading} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
+  const {isLoading,isFetching} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
   queryFn,onSuccess,staleTime:0})
   
   const skeletonArray=[1,2,3,4]
   return (
-  <Previewer text='Post Cac Registration'>
+  <Previewer text='PostCac Registration'>
+    {isFetching && <div className='h-5 w-5 rounded-full border-main border-[2px] fixed border-r-transparent z-50 top-4 right-16 animate-spin'></div>}
     <div className="mt-4">
       <div className="mt-1 overflow-hidden">
         <Table className='rounded-lg border border-border'>

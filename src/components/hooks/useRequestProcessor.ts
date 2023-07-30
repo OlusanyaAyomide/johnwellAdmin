@@ -109,7 +109,6 @@ export const useGetRequest = ({
         console.log("heree")
         setStep(0)}
     }
-    console.log("finalll")
     onError(res)
     
     }

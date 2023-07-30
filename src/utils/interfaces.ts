@@ -144,4 +144,14 @@ export interface IPostAPiresponse{
   data:IPostDetail[]
 }
 
+export interface IManageUser {
+  _id: string;
+  name: string;
+  email: string;
+  isAdmin: boolean;
+  createdAt: string;
+  __v: number;
+}
+
+
 

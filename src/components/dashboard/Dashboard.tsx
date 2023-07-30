@@ -31,7 +31,7 @@ export default function Dashboard() {
     console.log(url)
     return request.get(url) as Promise<AxiosResponse<IApiResponse>>
   }
-  const {isLoading} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
+  const {isLoading,isFetching} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
   queryFn,onSuccess,staleTime:0})
 
 
@@ -39,7 +39,7 @@ export default function Dashboard() {
   return (
       <Previewer text='Pre Cac Registration'>
       <div className='mt-4'>
-      {isLoading && <div className='h-5 w-5 rounded-full border-main border-[2px] fixed border-r-transparent z-50 top-4 right-16 animate-spin'></div>}
+      {isFetching && <div className='h-5 w-5 rounded-full border-main border-[2px] fixed border-r-transparent z-50 top-4 right-16 animate-spin'></div>}
           {allPreData.length > 0  && <div className="mt-1 overflow-hidden">
             <Table className='rounded-lg border border-border'>
               <TableCaption>List of filted entries</TableCaption>

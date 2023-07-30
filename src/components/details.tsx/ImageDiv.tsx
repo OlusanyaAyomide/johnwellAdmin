@@ -7,6 +7,7 @@ import useDownloader from "react-use-downloader"
 
 export default function ImageDiv({url,text}:{url:string,text:string}) {
   const {download} = useDownloader()
+  console.log(url)
   const cloudlink = `https://res.cloudinary.com/da3wqzkz3/image/upload/v1690586012/${url}`
   console.log(cloudlink)
   return (

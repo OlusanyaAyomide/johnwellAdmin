@@ -11,6 +11,8 @@ import { useGetRequest, usePostRequest } from './components/hooks/useRequestProc
 import FullScreenLoader from './utils/FullScreenLoader'
 import { AxiosResponse } from 'axios'
 import { IUser } from './utils/interfaces'
+import AddUser from './components/auth/AddUsers'
+import ManageUsers from './components/auth/ManageUsers'
 
 interface ProfileResponse{
   user:IUser
@@ -38,6 +40,8 @@ export default function () {
           {step === 2 && <PostDashBoard/>}
           {step === 3 &&  <PostDetail/>}
           {step === 4 && <Detail/>}
+          {step===6 && <AddUser/>}
+          {step===7 && <ManageUsers/>}
          </Layout>}
            {step ===0 && <LogIn/>}
            </>}
