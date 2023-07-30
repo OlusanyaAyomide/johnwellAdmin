@@ -8,7 +8,7 @@ interface IPhotoGrid{
    imagename:string
 }
 
-export default function PhotoGrid({userid,passport,signature,imagename}:IPhotoGrid) {
+export default function PhotoGrid({userid,passport,signature}:IPhotoGrid) {
    const randomChoice = useMemo(()=>{
       return Math.floor(Math.random() * 2) + 1
    },[])
@@ -17,28 +17,28 @@ export default function PhotoGrid({userid,passport,signature,imagename}:IPhotoGr
       <div className='flex  w-full max-w-[750px]  mx-auto rounded-md overflow-hidden'>
          <div className='w-6/12 border-r-2 border-white'>
             <div className='h-[180px] border-b-2 border-white'>
-               <ImageDiv imagename={imagename} url={passport} text='Passport'/>
+               <ImageDiv url={passport} text='Passport'/>
             </div>
             <div className='h-[180px]'>
-               <ImageDiv imagename={imagename} url={signature} text='signature'/>
+               <ImageDiv  url={signature} text='signature'/>
             </div>
          </div>
          <div className='w-6/12 h-[360px]  border-l-2 '>
-            <ImageDiv imagename={imagename}  url={userid} text='Identification'/>
+            <ImageDiv   url={userid} text='Identification'/>
          </div>
       </div>
    )
    const Type2 = () =>(
       <div className='rounded-md  overflow-hidden w-full max-w-[750px] mx-auto'>
          <div className='border-b-2 h-[260px] border-white'>
-            <ImageDiv imagename={imagename}  url={signature}  text='signature'/>   
+            <ImageDiv url={signature}  text='signature'/>   
          </div>
          <div className='w-full flex'>
             <div className='h-[180px] w-6/12 border-r-2 border-white'>
-             <ImageDiv imagename={imagename}  text='Identification' url={userid}/>
+             <ImageDiv   text='Identification' url={userid}/>
             </div>
             <div className='h-[180px] w-6/12 border-r-2 border-white'>
-               <ImageDiv imagename={imagename}  text='Passport' url={passport}/>
+               <ImageDiv text='Passport' url={passport}/>
            </div>
          </div>
       </div>
