@@ -363,6 +363,25 @@ export const PostImgDemo =[  "https://res.cloudinary.com/da3wqzkz3/image/upload/
 ]
 
 
+
+const getDaySuffix = (day: number) => {
+  if (day >= 11 && day <= 13) {
+    return "th";
+  }
+
+  const lastDigit = day % 10;
+  switch (lastDigit) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
+
 export const dateToString =(date:Date)=>{
   const months = [
     "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -372,6 +391,8 @@ export const dateToString =(date:Date)=>{
   const month = months[date.getMonth()];
   const day = date.getDate();
   const year = date.getFullYear();
+  const daySuffix = getDaySuffix(day);
 
-  return `${month} ${day} ${year}`;
+  return `${day}${daySuffix} ${month} ${year}`;
+
 }
