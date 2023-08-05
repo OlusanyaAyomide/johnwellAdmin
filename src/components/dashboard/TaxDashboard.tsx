@@ -5,36 +5,37 @@ import { useContext } from 'react'
 import Allcontext from '@/store/context'
 import request from '../hooks/requests'
 import { AxiosResponse } from 'axios'
-import { IPostAPiresponse, IPostDetail } from '@/utils/interfaces'
+import { IPostAPiresponse, IPostDetail, ITaxDetail, ITaxResponse } from '@/utils/interfaces'
 import { useGetRequest } from '../hooks/useRequestProcessor'
 import { Skeleton } from '../ui/skeleton'
+// import { ITaxDetail,ITaxResponse } from '@/utils/interfaces'
 
-export default function PostDashBoard() {
+export default function TaxDashBoard() {
   
-  const {Appfilters:{limit,page,duration,status},setPostDetail,setStep,
-  setAppFilters,setAllPosts,allPosts,setTimeLine} = useContext(Allcontext)
+  const {Appfilters:{limit,page,duration,status},setStep,
+  setAppFilters,setTimeLine,setAllTax,allTax,setTaxDetail} = useContext(Allcontext)
 
-  const handleDispath = (value:IPostDetail)=>{
-    setPostDetail(value)
-    setStep(3)
+  const handleDispath = (value:ITaxDetail)=>{
+    setTaxDetail(value)
+    setStep(8)
   }
-  const onSuccess = (res:AxiosResponse<IPostAPiresponse>)=>{
+  const onSuccess = (res:AxiosResponse<ITaxResponse>)=>{
     const {page,total} = res.data
     setAppFilters((prev)=>{return{...prev,total,page}})
-    setAllPosts(res.data.data)
+    setAllTax(res.data.data)
     setTimeLine(res.data.timeLine)
 
   }
   const queryFn = ()=>{
-    const url =`api/v1/post?duration=${duration}&page=${page}&limit=${limit}`
-    return request.get(url) as Promise<AxiosResponse<IPostAPiresponse>>
+    const url =`api/v1/tax?duration=${duration}&page=${page}&limit=${limit}`
+    return request.get(url) as Promise<AxiosResponse<ITaxResponse>>
   }
-  const {isLoading,isFetching} = useGetRequest({queryKey:[`post-${limit}`,`${page}`,`${duration}`,`${status}`],
+  const {isLoading,isFetching} = useGetRequest({queryKey:[`tax-${limit}`,`${page}`,`${duration}`,`${status}`],
   queryFn,onSuccess,staleTime:0})
   
   const skeletonArray=[1,2,3,4]
   return (
-  <Previewer text='PostCac Registration'>
+  <Previewer text='FIRS - TAX IDENTIFICATION NUMBER'>
     {isFetching && <div className='h-5 w-5 rounded-full border-main border-[2px] fixed border-r-transparent z-50 top-4 right-16 animate-spin'></div>}
     <div className="mt-4">
       <div className="mt-1 overflow-hidden">
@@ -50,7 +51,7 @@ export default function PostDashBoard() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-              {allPosts.map((item,key)=>(
+              {allTax.map((item,key)=>(
                 <TableRow onClick={()=>{handleDispath(item)}} key={key} className={`text-shade hover:text-black cursor-pointer hover:bg-[#71b0e4]/10 ${key%2===0?"bg-gray-200/20":""}`}>
                     <TableCell className=' text-center whitespace-nowrap'>{key+1}</TableCell>
                     <TableCell className='w-[150px] text-center whitespace-nowrap'>{formatDate(item.createdAt)}</TableCell>
@@ -62,13 +63,13 @@ export default function PostDashBoard() {
               </TableBody>
         </Table>
       </div>
-      {allPosts.length === 0 && isLoading && <div className='mt-6'>
+      {allTax.length === 0 && isLoading && <div className='mt-6'>
             {skeletonArray.map((item)=>(
               <Skeleton className='rounded-sm h-[80px] mb-2 w-full' key={item}/>
             ))}
           </div>
         }
-        {allPosts.length === 0 && !isLoading && <div className='h-[60px] grid place-items-center'>
+        {allTax.length === 0 && !isLoading && <div className='h-[60px] grid place-items-center'>
             <div>
               <h1 className='text-lg text-center mb-2 font-medium'>All Caught up</h1>
               <h1 className='text-center'>No result matches this query</h1>

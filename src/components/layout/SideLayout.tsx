@@ -31,7 +31,7 @@ export default function SideLayout() {
       }
       if (key ===2 && name === "Add Users"){
          setStep(6)
-      }else{
+      }else if (key === 2 && name === "Manage Users"){
          setStep(7)
       }
 

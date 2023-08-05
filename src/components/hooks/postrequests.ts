@@ -14,3 +14,6 @@ export const NewUserrequest = (body:any)=>{
 export const deleteFieldrequest = (body:any)=>{
     return request.post("api/v1/predelete",body)
 }
+export const taxNumberequest = (body:any)=>{
+    return request.post("api/v1/tax",body)
+}

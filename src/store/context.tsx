@@ -1,4 +1,4 @@
-import { IDetail, IFilters, IPostDetail, ITimeline, IUser } from "@/utils/interfaces"
+import { IDetail, IFilters, IPostDetail, ITaxDetail, ITimeline, IUser } from "@/utils/interfaces"
 import React, { createContext,useState } from "react"
 
 export interface IStepInterface{
@@ -34,6 +34,10 @@ export interface ContextType{
     postDetail:IPostDetail
     setAllPosts:React.Dispatch<React.SetStateAction<IPostDetail[]>>
     allPosts:IPostDetail[]
+    taxDetail:ITaxDetail,
+    allTax:ITaxDetail[],
+    setTaxDetail:React.Dispatch<React.SetStateAction<ITaxDetail>>
+    setAllTax:React.Dispatch<React.SetStateAction<ITaxDetail[]>>
 
 
        
@@ -54,13 +58,15 @@ export const AllContextProvider =(children:any)=>{
     const [timeLine,setTimeLine] = useState<ITimeline>({} as ITimeline)
     const [postDetail,setPostDetail] = useState<IPostDetail>({} as IPostDetail)
     const [allPosts,setAllPosts] = useState<IPostDetail[]>([])
+    const [taxDetail,setTaxDetail] = useState<ITaxDetail>({} as ITaxDetail)
+    const [allTax,setAllTax] = useState<ITaxDetail[]>([])
 
 
 
 
     const context = {
         businessType,setBusinessType,setIsEditing,isEditing,filterArray,setFilters,step,setStep,profile,setProfile,postDetail,setPostDetail,allPosts,setAllPosts,
-        Appfilters,setAppFilters,activeDetail,setActiveDetail,allPreData,setallPreData,timeLine,setTimeLine
+        Appfilters,setAppFilters,activeDetail,setActiveDetail,allPreData,setallPreData,timeLine,setTimeLine,allTax,setAllTax,taxDetail,setTaxDetail
     }
     return <Allcontext.Provider value={context}>{children.children}</Allcontext.Provider>
     

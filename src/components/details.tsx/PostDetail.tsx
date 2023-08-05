@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import Display from './Display'
-import { PostImgDemo } from '@/utils/contants'
 import ImageDiv from './ImageDiv'
 import Allcontext from '@/store/context'
 

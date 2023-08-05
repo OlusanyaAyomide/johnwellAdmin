@@ -154,4 +154,25 @@ export interface IManageUser {
 }
 
 
+export interface ITaxDetail{
+  _id: string;
+  firstName:string
+  lastName:string
+  phone:string
+  email:string
+  address:string
+  companyName:string
+  BNNumber:string
+  regDate:Date
+  createdAt: string
+}
 
+
+export interface ITaxResponse{
+  status: string;
+  length: number;
+  page: number;
+  total: number;
+  timeLine:ITimeline;
+  data:ITaxDetail[];
+}

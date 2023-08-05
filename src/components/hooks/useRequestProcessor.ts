@@ -80,6 +80,7 @@ export const useGetRequest = ({
     onSuccess,
     onError:(res:AxiosError<any>)=>{
         console.log(res.response?.data.error)
+        console.log("heree")
 
     if (res.code === "ERR_NETWORK" && showError){
         toast({

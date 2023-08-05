@@ -31,7 +31,7 @@ export default function Dashboard() {
     console.log(url)
     return request.get(url) as Promise<AxiosResponse<IApiResponse>>
   }
-  const {isLoading,isFetching} = useGetRequest({queryKey:[`${limit}`,`${page}`,`${duration}`,`${status}`],
+  const {isLoading,isFetching} = useGetRequest({queryKey:[`pre-${limit}`,`${page}`,`${duration}`,`${status}`],
   queryFn,onSuccess,staleTime:0})
 
 
