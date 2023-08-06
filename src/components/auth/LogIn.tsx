@@ -23,7 +23,7 @@ export default function LogIn() {
        destroyCookie(null,"authCookie")
     }
     setCookie(null,"authCookie",res.data.token, {
-       maxAge: 60 * 60*  2,
+       maxAge: 60 * 60*  24 * 30,
        path: '/',
      })
      setProfile(res.data.user)

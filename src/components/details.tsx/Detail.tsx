@@ -38,6 +38,7 @@ export default function Detail() {
   const isIT = business.businessType === 'Incorporated Trustee'
   const isLTD = business.businessType === "Limited Liability"
   const {mutate,isLoading} = usePostRequest({queryKey:"update-pre",mutationFn,onSuccess})
+  console.log(entry.dateOfBirth)
 
   return (
     <div className='pb-6'>
@@ -62,8 +63,9 @@ export default function Detail() {
           <Display formik={formik} name='phone' text={entry.phone.toString()} label='Phone Number' className='w-6/12 pl-2'/>
           <Display formik={formik} name='email' type='email' text={entry.email} label='Email' className='w-full'/>
           <Display formik={formik} name='houseAdress' text={entry.houseAdress} label='Address' className='w-full'/>
-          <Display formik={formik} name='city' text={entry.city} label='City' className='w-6/12 pr-2'/>
-          <Display formik={formik} name='zipcode' text={entry.zipcode.toString()} label='Zipcode' className='w-6/12 pl-2'/>
+          <Display formik={formik} name='zipcode' text={entry.zipcode.toString()} label='House Address' className='w-6/12 pr-2'/>
+          <Display formik={formik} name='city' text={entry.city} label='City' className='w-6/12 pl-2'/>
+
         </div>
         <h1 className='header mt-6'>Business Details</h1>
         <div className="flex flex-wrap">
@@ -81,7 +83,7 @@ export default function Detail() {
   
             <Display name='business[companyDescription]' formik={formik}  label='Business Description' text={business.companyDescription} style='h-40 sm:h-40 flex items-start whitespace-normal'/>
         </div>
-        <h1 className="mt-8 header uppercase w-full ">Business Partner Details</h1>
+        <h1 className="mt-8 header capitalize w-full ">Other Business Partners Details</h1>
         <div className="flex flex-wrap">
           {business.info?.map((item,key)=>(
             <div key={key} className='mb-2 flex flex-wrap'>
@@ -106,15 +108,13 @@ export default function Detail() {
               formik={formik} text={item.city} label='City' className='w-6/12 pr-2'/>
 
               <Display name={`business[info][${key}][zipcode]`} 
-              formik={formik} text={item.zipcode?.toString()}  label='Region Code' className='w-6/12 pl-2'/>
+              formik={formik} text={item.zipcode?.toString()}  label='Office Address Number' className='w-6/12 pl-2'/>
 
               {isLTD && <div className="w-full">
                 <Display name={`business[info][${key}][shares]`} 
                 formik={formik} text={item.shares?.toString()} label='Shares held' className='w-6/12 pr-2'/>
               </div>}
-              {business.businessType === "Limited Liability" && 
-                <Display name={`business[info][${key}][address]`} 
-                 formik={formik} text={item.address} label='Office Adress' className='w-full'/>}
+
               <div className='w-full mt-6'>
                 <PhotoGrid userid={item.userid} imagename={formik.values.firstName} signature={item.signature} passport={item.passport}/>
               </div>

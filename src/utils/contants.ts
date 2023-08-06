@@ -70,21 +70,16 @@ export const statusPreview=[
 
 export function formatDate(dateTimeString:string) {
   const options:Intl.DateTimeFormatOptions= { day: 'numeric', month: 'long', year: 'numeric' };
-  const date = new Date(dateTimeString);
-  const formattedDate = date.toLocaleDateString('en-GB', options);
+  const inputDate = new Date(dateTimeString)
+  const formattedDate = inputDate.toLocaleDateString('en-GB', options);
 
-  // Get the day without leading zero and add 'st', 'nd', 'rd', or 'th'
-  const day = date.getDate();
-  const daySuffix =
-    day === 1 || day === 21 || day === 31
-      ? 'st'
-      : day === 2 || day === 22
-      ? 'nd'
-      : day === 3 || day === 23
-      ? 'rd'
-      : 'th';
+  const day = inputDate.getDate();
+  const month = formattedDate.split(' ')[1];
+  const year = inputDate.getFullYear();
 
-  return formattedDate.replace(/\d+(?=st|nd|rd|th)/, (match) => match + daySuffix);
+  const formattedOutput = `${day}${day === 1 || day === 21 || day === 31 ? 'st' : day === 2 || day === 22 ? 'nd' : day === 3 || day === 23 ? 'rd' : 'th'} ${month} ${year}`;
+  return formattedOutput
+
 }
 
 // Example usage:
