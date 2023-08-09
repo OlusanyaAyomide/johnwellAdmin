@@ -39,7 +39,8 @@ export interface ContextType{
     setTaxDetail:React.Dispatch<React.SetStateAction<ITaxDetail>>
     setAllTax:React.Dispatch<React.SetStateAction<ITaxDetail[]>>
 
-    
+
+       
 }
 
 export const Allcontext = createContext<ContextType>({} as ContextType)

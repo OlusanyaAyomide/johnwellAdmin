@@ -20,7 +20,7 @@ export default function TaxDetail() {
               <Display text={taxDetail.email} className='pl-2 w-6/12' label='Email Address'/>
               <Display text={taxDetail.address} className='w-full' label='Office Address'/>
               <Display text={taxDetail.companyName} className='pr-2' label='BN - RC Number'/>
-              <Display text={taxDetail.BNNumber} className='pl-2' label='BN - RC Number'/>
+              <Display text={taxDetail.BNNumber} className='w-full' label='BN - RC Number'/>
               <Display text={dateToString(date)} label='Registration Date' className='w-full'/>
             </div>
           </div>

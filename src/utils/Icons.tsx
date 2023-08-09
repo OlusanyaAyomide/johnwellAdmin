@@ -11,6 +11,7 @@ import {FiEdit} from "react-icons/fi"
 import {BsTrash} from 'react-icons/bs'
 import { FiLogOut } from "react-icons/fi"
 import { BsEyeSlash,BsEye } from "react-icons/bs"
+import {HiArrowNarrowLeft} from "react-icons/hi"
 export const Icons = {
     search:AiOutlineSearch,
     menu:AiOutlineMenu,
@@ -33,5 +34,6 @@ export const Icons = {
     logout:FiLogOut,
     show:BsEye,
     hide:BsEyeSlash,
+    back:HiArrowNarrowLeft
 
 }

@@ -44,17 +44,19 @@ interface EntryStatus {
   
   interface BusinessInfo {
     _id: string;
-    firstName: string;
-    lastName: string;
-    email: string;
-    phone: string;
-    address: string;
-    city: string;
-    zipcode: string;
-    passport: string;
-    signature: string;
-    userid: string;
-    shares: string;
+    firstName:string
+    lastName:string
+    email:string
+    phone:string | number
+    passport:string
+    signature:string
+    userid:string
+    shares:string | number
+    city:string
+    state:string
+    officeNumber:string    
+    officeStreet:string
+    dateOfBirth:string
   }
   
   interface Business {
@@ -75,20 +77,24 @@ export interface ITimeline {
   }
   
 export interface IDetail {
-    _id: string;
-    activationKey: string;
-    firstName: string;
-    surName: string;
-    middleName: string;
-    email: string;
-    phone: string;
-    houseAdress: string;
-    city: string;
-    zipcode: string;
-    dateOfBirth: string;
-    status: string;
+    _id: string
+    status:string
+    activationKey:string,
+    firstName:string 
+    surName:string
+    middleName:string
+    email:string
+    phone:number | string
+    city:string
+    state:string
+    streetName:string
+    houseNumber:string
+    dateOfBirth:string
+    userid:string
+    passport:string
+    shares:string
+    signature:string
     business: Business;
-    createdAt: string;
   }
   
 export interface IApiResponse {

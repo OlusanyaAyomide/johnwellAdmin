@@ -17,10 +17,11 @@ interface IDisplay{
     style?:string
     type?:'text'|'email'
     name?:string
+    disabled?:boolean
     formik?:FormikProps<IDetail>
 }
 
-export default function Display({text="",name="",label,className,ngClass,style,type='text',formik}:IDisplay) {
+export default function Display({text="",name="",label,className,ngClass,style,type='text',formik,disabled=false}:IDisplay) {
    const {isEditing} = useContext(Allcontext)
    const {toast} = useToast()
    const handletoast = ()=>{
@@ -39,7 +40,7 @@ export default function Display({text="",name="",label,className,ngClass,style,t
                <Icons.clipboard className ="absolute cursor-pointer rounded-lg text-2xl bg-[#F8F8F8] text-main sm:text-3xl bottom-1 right-3 px-1"/>
          </CopyToClipboard>
       </div>}
-      {isEditing && <Input onChange={formik?.handleChange} name={name} value={text} type={type} className='h-10 focus:border  sm:h-12 focus-visible:ring-1  bg-[#F8F8F8]'/>}
+      {isEditing && <Input  disabled={disabled} onChange={formik?.handleChange} name={name} value={text} type={type} className='h-10 focus:border  sm:h-12 focus-visible:ring-1  bg-[#F8F8F8]'/>}
    </div>
   )
 }
