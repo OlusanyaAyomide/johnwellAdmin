@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import Display from './Display'
-import ImageDiv from './ImageDiv'
+import { getActualTime } from '@/utils/contants'
 import Allcontext from '@/store/context'
 import { dateToString } from '@/utils/contants'
 
@@ -11,6 +11,7 @@ export default function TaxDetail() {
   return (
     <div className='pb-6'>
        <h1 className="text-lg font-semibold uppercase my-1">Post Cac Registration Data for {taxDetail.firstName} {taxDetail.lastName}</h1>
+       <span className="block text-xs font-medium">submitted at {getActualTime(taxDetail.createdAt)}</span>
           <div className='rounded-lg mx-2 border-border/50 border mb-6 shadow-md py-8 px-2'>
             <h1 className='header'>Busines Details</h1>
             <div className='flex flex-wrap'>

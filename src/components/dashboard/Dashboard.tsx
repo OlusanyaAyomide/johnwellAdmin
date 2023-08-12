@@ -1,5 +1,4 @@
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from '../ui/table'
-import { DemoTable } from '@/utils/contants'
 import { formatDate } from '@/utils/contants'
 import { Badge } from '../ui/badge'
 import Previewer from './Previwer'
@@ -13,13 +12,13 @@ import { AxiosResponse } from 'axios'
 
 
 export default function Dashboard() {
-  // const isLoading = false
+
   const {Appfilters:{limit,page,duration,status},setActiveDetail,setStep,
   setAppFilters,setallPreData,allPreData,setTimeLine} = useContext(Allcontext)
   const onSuccess = (res:AxiosResponse<IApiResponse>)=>{
     const {page,total} = res.data
     setAppFilters((prev)=>{return{...prev,total,page}})
-    setallPreData(res.data.data)
+    setallPreData(res.data?.data)
     setTimeLine(res.data.timeLine)
   }
   const handleDispath = (value:IDetail)=>{

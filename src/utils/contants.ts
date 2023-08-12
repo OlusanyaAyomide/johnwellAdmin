@@ -391,3 +391,22 @@ export const dateToString =(date:Date)=>{
   return `${day}${daySuffix} ${month} ${year}`;
 
 }
+
+export const getActualTime =(date:string)=>{
+
+const inputDate = new Date(date);
+
+function getMonthAbbreviation() {
+    const months = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    return months[inputDate.getMonth()];
+  }
+  
+  // Format the Date object to the desired output format
+  const formattedDateString = `${getMonthAbbreviation()} ${inputDate.getDate()} ${inputDate.getFullYear()} ${inputDate.getHours()}:${inputDate.getMinutes()}`;
+  
+  return formattedDateString
+
+}

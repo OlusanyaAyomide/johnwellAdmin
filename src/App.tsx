@@ -26,9 +26,9 @@ export default function () {
   const onSuccess = (res:AxiosResponse<ProfileResponse>)=>{
     setProfile(res.data.user)
   }
+  
   const onError = ()=>{
       setStep(0)
-
 
       
   }

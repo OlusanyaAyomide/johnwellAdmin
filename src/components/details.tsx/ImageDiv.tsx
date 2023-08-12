@@ -29,10 +29,10 @@ export default function ImageDiv({url,text}:{url:string,text:string}) {
             </DialogContent> 
         </Dialog>
 
-
-        <Button onClick={()=>{download(url,`test.jpg`)}} size={'icon'} className='p-1 hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] right-[15%] sm:right-[20%]'>
-        <Icons.download/>
-        </Button>
+{/* 
+        <Button onClick={()=>{download(url,`test.jpg`)}} size={'icon'} className='p-1 hover:hidden hidden hover:bg-white hover:text-main sm:hidden sm:group-hover:flex absolute z-40 bg-main text-2xl text-white top-[45%] right-[15%] sm:right-[20%]'>
+          <Icons.download/>
+        </Button> */}
 
     </div>
   )

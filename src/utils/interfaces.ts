@@ -67,6 +67,10 @@ interface EntryStatus {
     businessType: string;
     ngoType: string;
     companyDescription: string;
+    companyNumber:string
+    companyStreet:string
+    companyCity:string
+    companyState:string
     info: BusinessInfo[];
   }
   
@@ -94,7 +98,8 @@ export interface IDetail {
     passport:string
     shares:string
     signature:string
-    business: Business;
+    business: Business
+    createdAt: string
   }
   
 export interface IApiResponse {
