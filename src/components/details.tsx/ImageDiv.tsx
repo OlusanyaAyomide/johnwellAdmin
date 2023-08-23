@@ -21,8 +21,8 @@ export default function ImageDiv({url,text}:{url:string,text:string}) {
                   <Icons.full/>
                 </Button>        
             </DialogTrigger>  
-            <DialogContent>
-              <div className='h-screen w-screen'>
+            <DialogContent className='overflow-auto min-h-screen max-w-[800px]'>
+              <div className='h-auto max-h-[90vh]'>
                 <img src={cloudlink} alt="image"  className='object-contain'/>  
               </div>
 
