@@ -37,7 +37,7 @@ const onErrorResponse = (error:AxiosError|Error):Promise<AxiosError>=>{
 
 const request = axios.create({
   // baseURL:"http://localhost:4000/",
-  baseURL:"https://cac-backend.onrender.com",
+  baseURL:"http://54.161.6.142:4000/",
   headers:{
     "Content-Type":"application/json"
   }
