@@ -11,7 +11,7 @@ const onRequest=(config:InternalAxiosRequestConfig):InternalAxiosRequestConfig=>
       config.headers["Authorization"] = `Bearer ${authCookie}`
   }
 //   config.headers["Content-Type"] = "application/json"
- 
+  
   return config
 }
 const onResponse = (response:AxiosResponse):AxiosResponse=>{
@@ -36,8 +36,8 @@ const onErrorResponse = (error:AxiosError|Error):Promise<AxiosError>=>{
 
 
 const request = axios.create({
-  // baseURL:"http://localhost:4000/",
-  baseURL:"http://54.161.6.142:4000/",
+  baseURL:"https://54.161.6.142:8443/",
+  // baseURL:"https://54.161.6.142:4000/",
   headers:{
     "Content-Type":"application/json"
   }
