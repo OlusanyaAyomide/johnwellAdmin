@@ -46,6 +46,7 @@ export default function Dashboard() {
                 <TableRow>
                   <TableHead className='w-fit px-1 overflow-hidden'>S/N</TableHead>
                   <TableHead className='whitespace-nowrap text-center px-2'>Entry Date</TableHead>
+                  <TableHead className='whitespace-nowrap text-center px-2'>Activation Key</TableHead>
                   <TableHead className='whitespace-nowrap text-center px-2'>Status</TableHead>
                   <TableHead className='whitespace-nowrap text-center px-2'>First name</TableHead>
                   <TableHead className='whitespace-nowrap text-center px-2'>Surname</TableHead>
@@ -56,10 +57,11 @@ export default function Dashboard() {
                 </TableRow>
               </TableHeader>
               <TableBody>
-                {allPreData.map((item:any,key:number)=>(
+                {allPreData.map((item,key:number)=>(
                   <TableRow onClick={()=>{handleDispath(item)}} key={key} className={`text-shade hover:text-black cursor-pointer hover:bg-[#71b0e4]/10 ${key%2===0?"bg-gray-200/20":""}`}>
                       <TableCell className=' text-center whitespace-nowrap'>{key+1}</TableCell>
                       <TableCell className='w-[150px] text-center whitespace-nowrap'>{formatDate(item.createdAt)}</TableCell>
+                      <TableCell className='text-center whitespace-nowrap'>{item.activationKey}</TableCell>
                       <TableCell className='whitespace-nowrap '>
                         <Badge className={`text-white ${item.status === "active"?"bg-main px-6":item.status ==="pending"?"bg-yellow-500 px-5":"bg-green-500"}`}>{item.status}</Badge>
                       </TableCell>
